@@ -1,13 +1,17 @@
-Students_Name = ["Name"]
-Students_ID = ["ID"]
-Students_Password = ["password"]
-Students_Grade = ["Grade"]
-Students_Attendance = ["Attendance"]
+Students_Name = []
+Students_ID = []
+Students_Password = []
+Students_Grade = []
+Students_Attendance = []
+
+                
+
 questions = {
     "Which programming language is the best?\na. Python\nb. Java\nc. C": "a",
     "Which programming language is older?\na. Python\nb. Java\nc. C": "c",
     "which PL is the best for web?\na. JavaScript\nb. PHP\nTypeScript": "a"
 }
+
 
 
 def sign_up():
@@ -72,6 +76,30 @@ def admin():
 
 
 def main():
+    with open('Student_Name', 'r') as filehandle:
+        for line in filehandle:
+            currentPlace = line[:-1]
+            Students_Name.append(currentPlace)
+    with open('Student_ID', 'r') as filehandle:
+        for line in filehandle:
+            currentPlace = line[:-1]
+            Students_ID.append(currentPlace)
+    with open('Student_Password', 'r') as filehandle:
+        for line in filehandle:
+            currentPlace = line[:-1]
+            Students_Password.append(currentPlace)
+
+    with open('Student_Attandance', 'r') as filehandle:
+        for line in filehandle:
+            currentPlace = line[:-1]
+            Students_Attendance.append(currentPlace)
+
+    with open('Student_Grade', 'r') as filehandle:
+        for line in filehandle:
+            currentPlace = line[:-1]
+            Students_Grade.append(currentPlace)
+
+
     while True:
         login = int(input("""
         ##########################
@@ -79,6 +107,7 @@ def main():
         ##      1. Sign up      ##
         ##      2. Sign in      ##
         ##       3. Admin       ##
+        ##        4. Quit       ##
         ##########################
 
         Enter the option... """))
@@ -88,7 +117,29 @@ def main():
             sign_in()
         elif login == 3:
             admin()
+        elif login == 4:
 
+            with open('Student_Name', 'w') as filehandle:
+                for listitem in Students_Name:
+                    filehandle.write('%s\n' % listitem)
+            
+            with open('Student_ID', 'w') as filehandle:
+                for listitem in Students_ID:
+                    filehandle.write('%s\n' % listitem)
+
+            with open('Student_Grade', 'w') as filehandle:
+                for listitem in Students_Grade:
+                    filehandle.write('%s\n' % listitem)
+
+            with open('Student_Password', 'w') as filehandle:
+                for listitem in Students_Password:
+                    filehandle.write('%s\n' % listitem)
+
+            with open('Student_Attandance', 'w') as filehandle:
+                for listitem in Students_Attendance:
+                    filehandle.write('%s\n' % listitem)
+            exit()
 
 if __name__ == '__main__':
     main()
+    
